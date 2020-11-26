@@ -17,6 +17,8 @@ class GreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        text_input.isSaveEnabled = false
+
         change_text_button.setOnClickListener {
             (activity as MainActivity).goToFragment(RedFragment())
         }

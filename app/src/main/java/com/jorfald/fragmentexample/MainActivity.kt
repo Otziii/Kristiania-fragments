@@ -14,17 +14,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
 
+        val recyclerFragment = RecyclerExampleFragment()
         val blackFragment = BlackFragment()
         val greenFragment = GreenFragment()
 
-        goToTab(blackFragment)
+        goToTab(recyclerFragment)
 
         left_button.setOnClickListener {
-            goToTab(blackFragment)
+            goToTab(recyclerFragment)
         }
 
         right_button.setOnClickListener {
-            goToTab(RecyclerExampleFragment())
+            goToTab(blackFragment)
         }
     }
 

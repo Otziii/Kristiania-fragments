@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.jorfald.fragmentexample.Animal
 import com.jorfald.fragmentexample.R
 import kotlinx.android.synthetic.main.fragment_list_example.view.*
 
@@ -31,13 +32,15 @@ class RecyclerExampleFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val list = mutableListOf<String>()
-        for (i in 0..1000) {
-            list.add("$i")
-        }
+        val list = mutableListOf<Animal>()
+        list.add(Animal("Hund", true))
+        list.add(Animal("Katt", true))
+        list.add(Animal("Mus", true))
+        list.add(Animal("Fisk", false))
+        list.add(Animal("Fugl", false))
 
-        recyclerAdapter = ExampleAdapter(requireContext(), list)
-        recyclerLayoutManager = GridLayoutManager(activity, 5)
+        recyclerAdapter = ExampleAdapter(list)
+        recyclerLayoutManager = LinearLayoutManager(activity)
 
         recyclerView.adapter = recyclerAdapter
         recyclerView.layoutManager = recyclerLayoutManager

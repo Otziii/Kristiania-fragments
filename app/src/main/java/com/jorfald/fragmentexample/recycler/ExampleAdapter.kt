@@ -1,37 +1,27 @@
 package com.jorfald.fragmentexample.recycler
 
-import android.content.Context
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.jorfald.fragmentexample.R
+import com.jorfald.fragmentexample.Animal
+import com.jorfald.fragmentexample.views.CustomLayout
 
 class ExampleAdapter(
-    private val context: Context,
-    var dataset: List<String>
+    var dataset: List<Animal>
 ) : RecyclerView.Adapter<ExampleAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val textView = TextView(parent.context)
-
-        textView.textSize = 35f
-        textView.setTextColor(context.getColor(R.color.green))
-
-        textView.layoutParams = ViewGroup.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        )
-
-        return ViewHolder(textView)
+        return ViewHolder(CustomLayout(parent.context))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.textView.text = dataset[position]
+        val animal = dataset[position]
 
-        if (position % 2 == 0) {
-            holder.textView.setBackgroundColor(context.getColor(R.color.blue))
+        holder.listItem.setHeader(animal.name)
+
+        if (animal.isMammal) {
+            holder.listItem.setSubTitle("Is mammal")
         } else {
-            holder.textView.setBackgroundColor(context.getColor(R.color.red))
+            holder.listItem.setSubTitle("Laying eggs")
         }
     }
 
@@ -39,5 +29,5 @@ class ExampleAdapter(
         return dataset.size
     }
 
-    class ViewHolder(val textView: TextView) : RecyclerView.ViewHolder(textView)
+    class ViewHolder(val listItem: CustomLayout) : RecyclerView.ViewHolder(listItem)
 }
