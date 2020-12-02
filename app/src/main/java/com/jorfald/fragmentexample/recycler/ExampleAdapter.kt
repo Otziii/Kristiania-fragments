@@ -1,7 +1,6 @@
 package com.jorfald.fragmentexample.recycler
 
 import android.content.Context
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jorfald.fragmentexample.Animal
@@ -30,7 +29,8 @@ class ExampleAdapter(
         }
 
         holder.listItem.setCrossClickListener {
-            
+            dataset.removeAt(position)
+            notifyDataSetChanged()
         }
     }
 
