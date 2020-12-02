@@ -4,12 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jorfald.fragmentexample.Animal
 import com.jorfald.fragmentexample.R
+import kotlinx.android.synthetic.main.fragment_list_example.*
 import kotlinx.android.synthetic.main.fragment_list_example.view.*
 
 class RecyclerExampleFragment : Fragment() {
@@ -44,5 +45,12 @@ class RecyclerExampleFragment : Fragment() {
 
         recyclerView.adapter = recyclerAdapter
         recyclerView.layoutManager = recyclerLayoutManager
+
+        delete_last_button.setOnClickListener {
+            if (list.isNotEmpty()) {
+                list.removeLast()
+                recyclerAdapter.notifyDataSetChanged()
+            }
+        }
     }
 }

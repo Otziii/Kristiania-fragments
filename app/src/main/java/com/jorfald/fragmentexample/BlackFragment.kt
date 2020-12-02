@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.jorfald.fragmentexample.views.CustomButton
-import com.jorfald.fragmentexample.views.CustomLayout
+import com.jorfald.fragmentexample.views.AnimalCell
 import kotlinx.android.synthetic.main.main_fragment.*
 
 class BlackFragment : Fragment() {
@@ -29,7 +29,7 @@ class BlackFragment : Fragment() {
 
         linear_layout.addView(newCustomButton)
 
-        val customLayout = CustomLayout(requireContext())
+        val customLayout = AnimalCell(requireContext())
         customLayout.setHeader("Første linje")
         customLayout.setSubTitle("Andre linje")
 

@@ -4,18 +4,20 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.jorfald.fragmentexample.R
 import kotlinx.android.synthetic.main.layout_custom.view.*
 
-class CustomLayout(context: Context, attributeSet: AttributeSet? = null) :
+class AnimalCell(context: Context, attributeSet: AttributeSet? = null) :
     ConstraintLayout(context, attributeSet) {
 
-    val iconImage: ImageView
-    val headerText: TextView
-    val subTitleText: TextView
+    private val iconImage: ImageView
+    private val headerText: TextView
+    private val subTitleText: TextView
+    private val crossButton: ImageButton
 
     init {
         val view = LayoutInflater.from(context).inflate(R.layout.layout_custom, this)
@@ -23,8 +25,7 @@ class CustomLayout(context: Context, attributeSet: AttributeSet? = null) :
         iconImage = view.icon_image
         headerText = view.header_text
         subTitleText = view.sub_title_text
-
-        setBackgroundColor(context.getColor(R.color.green))
+        crossButton = view.delete_button
     }
 
     fun setHeader(newText: String) {
@@ -37,5 +38,9 @@ class CustomLayout(context: Context, attributeSet: AttributeSet? = null) :
 
     fun setIconImage(drawable: Drawable) {
         iconImage.setImageDrawable(drawable)
+    }
+
+    fun setCrossClickListener(clickListener: OnClickListener) {
+        crossButton.setOnClickListener(clickListener)
     }
 }
